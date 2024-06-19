@@ -1,0 +1,40 @@
+<script lang="ts">
+	import CTA from '$lib/components/CTA.svelte';
+
+	export let title: string;
+	export let copy: string;
+	export let link: {
+		url: string;
+		label: string;
+	}[];
+</script>
+
+<aside class="banner">
+	<h2 class="u-eyebrow">{title}</h2>
+	<p>{copy}</p>
+	<CTA url={link[0]?.url} label={link[0]?.label} type="inverted" />
+</aside>
+
+<style>
+	.banner {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		place-content: center;
+		place-items: center;
+		padding: 3rem;
+		background-color: var(--c-highlight);
+		color: var(--c-text-invert);
+		text-align: center;
+
+		h2 {
+			color: var(--c-text-invert);
+		}
+
+		p {
+			max-width: 45ch;
+			font-size: clamp(1.125rem, 0.8207rem + 1.5217vi, 2rem);
+			line-height: 1.25;
+		}
+	}
+</style>
