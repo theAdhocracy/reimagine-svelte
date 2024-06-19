@@ -13,23 +13,15 @@
 	let global = data.global[0];
 
 	// Function: Controls hamburger menu (main navigation)
-	let menuButton: any;
+	function openMenu() {
+		const menuModal: HTMLDialogElement | null = document.querySelector('#globalMenuModal');
 
-	onMount(() => {
-		const menuModal = document.querySelector('#globalMenuModal');
-
-		if (menuButton) {
-			menuButton?.addEventListener('click', () => {
-				if (menuModal?.getAttribute('open')) {
-					// @ts-ignore
-					menuModal?.close();
-				} else {
-					// @ts-ignore
-					menuModal?.showModal();
-				}
-			});
+		if (menuModal?.getAttribute('open')) {
+			menuModal?.close();
+		} else {
+			menuModal?.showModal();
 		}
-	});
+	}
 </script>
 
 <header class="global-header">
@@ -37,7 +29,7 @@
 	<a href="/search" aria-label="Search">
 		<SearchIcon />
 	</a>
-	<button id="globalMenuButton" type="button" bind:this={menuButton}>Menu</button>
+	<button id="globalMenuButton" type="button" on:click={openMenu}>Menu</button>
 
 	<dialog id="globalMenuModal">
 		<header>
@@ -57,9 +49,7 @@
 	</dialog>
 </header>
 
-<main>
-	<slot />
-</main>
+<slot />
 
 <footer class="global-footer">
 	<section>
