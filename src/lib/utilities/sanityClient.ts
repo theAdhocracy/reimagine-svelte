@@ -1,9 +1,9 @@
 import { createClient } from '@sanity/client';
-import { env } from '$env/dynamic/public';
+import { PUBLIC_SANITY_PROJECT_ID, PUBLIC_SANITY_DATASET } from '$env/static/public';
 
 const client = createClient({
-	projectId: env.PUBLIC_SANITY_PROJECT_ID,
-	dataset: env.PUBLIC_SANITY_DATASET,
+	projectId: PUBLIC_SANITY_PROJECT_ID,
+	dataset: PUBLIC_SANITY_DATASET,
 	apiVersion: '2022-03-25',
 	useCdn: false
 });
